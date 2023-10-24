@@ -1,0 +1,25 @@
+{%extends 'layouts/base.html'%} 
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block titulo %}DETALLE ACTIVIDAD{% endblock titulo %}
+
+{% block content %}
+<a href="{%url 'lista_actividades' %}" class="btn btn-primary" >Volver</a>
+<div>
+
+    <form action="" method="post">
+{% csrf_token %}
+
+{{ form|crispy}}
+
+<div class="text-center">
+    <input class="btn btn-lg btn-secondary" type="submit" value="CREAR ACTIVIDAD">
+</div>
+    </form>
+
+</div>
+</div>
+
+
+{% endblock content %}

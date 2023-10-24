@@ -1,0 +1,47 @@
+{%extends 'layouts/base.html'%} 
+{% load static %}
+
+{% block titulo %}ADMINISTRACION{% endblock titulo %}
+{% block content %}
+
+
+
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<div>
+<a href="{% url 'crear_actividad' %}" class="btn btn-md btn-success">Crear Actividad</a>
+
+    {% comment %} <a href="{% ulr 'crear_actividad'%}" class="btn btn-success">+Actividad </a> {% endcomment %}
+    <div class="table-responsive d-flex">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <th>Nombre</th>
+          <th>acción</th>
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% if actividades %}
+         {% for actividad in actividades %} 
+       <tr>
+        <td>{{actividad.id}} </td>
+          <td>{{actividad.nombre}}</td>
+         
+          
+          <td>
+            <a href="{% url 'detalle_actividad' actividad.id %}"class="btn btn-primary">Ver Más</a>
+            <a href="{% url 'eliminar_actividad' actividad.id %}"class="btn btn-danger">Eliminar</a>
+            <a href="{% url 'editar_actividad' actividad.id %}"class="btn btn-secondary">editar</a>
+            {% comment %} <a href="{% url 'eliminar_actividad'actividad.id %}" title="Eliminar" class="btn btn-danger"></a> {% endcomment %}
+          </td>
+          
+        </tr>
+    
+        {% endfor %}
+         {% endif %}
+        </div>
+      </div>
+
+{% endblock content %}

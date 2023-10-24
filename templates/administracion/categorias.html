@@ -1,0 +1,41 @@
+{%extends 'layouts/base.html'%} 
+{% load static %}
+
+{% block titulo %}CATEGORIAS{% endblock titulo %}
+{% block content %}
+
+<a href="{% url 'crear_categoria' %}" class="btn btn-md btn-success">+ Crear Categoria</a>
+<div class="col"></div>
+<div class="col">
+   
+    <div class="table-responsive">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+        
+          <th>Categorias</th>
+          <th>actividad</th>
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% if categorias %}
+         {% for categoria in categorias %} 
+       <tr>
+        <td>{{categoria.categoria}} </td>
+          <td>{{categoria.actividad}}</td>
+         
+          
+          <td>
+            <a href="{% url 'detalle_categoria' categoria.id %}"class="btn btn-primary">Ver Más</a>
+            <a href="{% url 'eliminar_categoria' categoria.id %}"class="btn btn-danger">Eliminar</a>
+            <a href="{% url 'editar_categoria' categoria.id %}"class="btn btn-secondary">editar</a>
+            {% comment %} <a href="{% url 'eliminar_actividad'actividad.id %}" title="Eliminar" class="btn btn-danger"></a> {% endcomment %}
+          </td>
+          
+        </tr>
+       <div class="col"></div>
+        {% endfor %}
+         {% endif %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+{%extends 'layouts/base.html'%} 
+{% load crispy_forms_tags %} 
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <H3>Desea eliminar el profesor  {{porfesor.nombre}} ?</H3>
+    <button class="btn btn-danger" type="submit"> confirmar</button>
+    <a class="btn btn-default"  href="{% url 'profesores' %}">cancelar</a>
+</form>
+{% endblock content %} 

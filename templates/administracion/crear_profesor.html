@@ -1,0 +1,28 @@
+
+{%extends 'layouts/base.html'%} 
+ {% load crispy_forms_tags %}  
+
+{% block content %}
+
+
+
+<h3 class="text-center">Nuevo Profesor</h3>
+<p class="fs-5 text-center px-5">Datos del Profesor</p>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+    <div class="col-md-6 col-md-offset-3">
+
+    </div>
+      <form action="·"method="POST">
+        {% csrf_token %}
+        {{ form|crispy}}
+        </div>
+        <input type="submit" class="btn btn-success" value="Guardar">
+      </form>
+     
+
+    </div>
+</div>
+</div>
+
+{% endblock %}

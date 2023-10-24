@@ -1,0 +1,17 @@
+{%extends 'layouts/base.html'%} 
+{% load static %}
+{% block titulo %}DETALLE ACTIVIDAD{% endblock titulo %}
+{% block content %}
+<a href="{%url 'lista_socios' %}" class="btn btn-primary" >Volver</a>
+<h1>{{object.nroSocio}}</h1>
+<div>
+    {{object.nombre}}
+    {{object.apellido}}
+    {{object.calle}}
+    {{object.nro}}
+    {{object.localidad}}
+</div>
+
+
+
+{% endblock content %}
