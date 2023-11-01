@@ -2,29 +2,34 @@
 {% load static %}
 {% block titulo %}ADMINISTRACION{% endblock titulo %}
 {% block content %}
-<br>
+ <br>
 <link rel="stylesheet" href="{% static "css/style.css" %}">
+
 <div class="container">
-  <a href="{%url 'crear_profesor' %}" class="btn btn-success" >Nuevo Profesor</a>
+
   <br>
-  <div class="row">
+
     
-    <div class="col">      
+    <div class="left">      
       <div class="card m-2">
         <div class="card-body">
+          <a href="{%url 'crear_profesor' %}" class="btn btn-success" >Nuevo Profesor</a>
           <h3>Buscar Profesor</h3>
-          <form action="" method='GET'>
+
+          <form method="get" action="{% url 'lista_profesores' %}" >
             <div class="form-group">
-              <input type="text" id="txtNroSocio" name="buscar" class="form-control" placeholder="Nº Socio" value="{{ request.GET.buscar_socio}}">
-            </div>
+              <input type="text" id="q" name="q" class="form-control" placeholder="Nombre o Apellido">
+          
             <button type="submit" class="btn btn-primary">Buscar</button>
+          </div>
           </form>
+
         </div>
       </div>
         </div>
 
 
-<div class="col">
+<div class="right">
   <div class="table-responsive">
     <table class="table table-striped">
     <thead>
@@ -43,14 +48,14 @@
       <td>{{profesor.id}} </td>
         <td>{{profesor.nombre}}</td>
         <td>{{ profesor.apellido }} </td>
-        {% comment %} <td><a href={% url 'editar_socio' p.id_profesor %}  class="btn btn-warning">Editar</a></td>    {% endcomment %}
+        
         
         <td>
           <td>
             <a href="{% url 'detalle_profesor' profesor.id %}"class="btn btn-primary">Ver Más</a>
             <a href="{% url 'eliminar_profesor' profesor.id %}"class="btn btn-danger">Eliminar</a>
             <a href="{% url 'editar_profesor' profesor.id %}"class="btn btn-secondary">editar</a>
-            {% comment %} <a href="{% url 'eliminar_actividad'actividad.id %}" title="Eliminar" class="btn btn-danger"></a> {% endcomment %}
+           
           </td>
         </td>
         
@@ -64,10 +69,6 @@
   </div>
 
     </div>
-  </div>
-</div>
-
-
-
+  </div> 
 
     {% endblock content %}

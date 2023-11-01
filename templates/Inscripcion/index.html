@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+
+
+
+{% block titulo %}Incripcion{% endblock%}
+
+{% block contenido %}
+<h1 class="mt-4">Incripcion</h1>
+{% comment %} <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="{% url 'inicio_administracion' %}">Administracion</a></li>
+    <li class="breadcrumb-item active">{{titulo}}</li>
+</ol> {% endcomment %}
+
+<div class="card">
+    <div class="card-body">
+        <a name="" id="" class="btn btn-success" href="{{url_alta}}" role="button"> <i class="fa-solid fa-circle-plus"></i> Crear </a>
+        <!-- bs5-table-defaul -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Fecha Creacion</th>
+                    <th>NroSocio</th>
+                    <th>Activiad</th>
+                    <th>Categoria</th>
+                    {% comment %} <th>Acciones</th> {% endcomment %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscripcion in object_list  %}
+                    <tr>
+                        <td>{{inscripcion.id}}</td>
+                        <td>{{inscripcion.fecha_creacion}}</td>
+                        <td>{{inscripcion.nroSocio}}</td>
+                        <td>{{inscripcion.actividad}}</td>
+                        <td>{{inscripcion.categoria}}</td>
+                        {% comment %} <td>{{inscripcion.get_estado_display}}</td> {% endcomment %}
+                        {% comment %} <td>
+                            <a href="{{inscripcion.obtener_modificacion_url}}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
+                            <a href="{{inscripcion.obtener_baja_url}}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </td> {% endcomment %}
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+
+{% endblock %}

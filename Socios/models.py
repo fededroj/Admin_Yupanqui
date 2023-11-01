@@ -25,5 +25,5 @@ class Socio(models.Model):
    
     foto = models.ImageField(upload_to='imagenes',null=True,verbose_name='Foto',blank=True)
     estado = models.IntegerField(choices=ESTADOS,default=1)
-    # def __str__(self):
-    #     return f"{self.nroSocio}  -  {self.nombre}  -  {self.apellido}" 
+    def __str__(self):
+        return f"{self.nroSocio}  -  {self.nombre}    {self.apellido}" 

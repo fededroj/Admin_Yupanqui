@@ -1,0 +1,93 @@
+{% extends "layouts/base.html" %}
+{% load custom_filters %}
+{% load static  %}
+
+{% block content %}
+
+
+<h1>Reporte de Cuotas</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <!-- Formulario de filtro por año -->
+        <form method="get">
+            {{ form.ano.label_tag }}
+            {{ form.ano }}
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-12">
+        <!-- Datos del socio -->
+        <h2>{{ cuotas.0.socio }}</h2>
+        <p>Nro de Socio: {{ cuotas.0.socio.nroSocio }}</p>
+        <p>DNI: {{ cuotas.0.socio.dni }}</p>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-12">
+        <!-- Tabla de cuotas -->
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <!-- Tabla de cuotas -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Mes</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mes_ano in cuotas.0.ano|months_iterator %}
+                        {% with mes=mes_ano.0 mes_nombre=mes_ano.1 %}
+                        <tr>
+                            <td>{{ mes_nombre }}</td>
+                            <td>
+                                {% with cuota=mes|get_month_value:cuotas %}
+                                    {% if cuota %}
+                                        {{ cuota.monto }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                {% endwith %}
+                            </td>
+                            <td>
+                                {% with cuota=mes|get_month_value:cuotas %}
+                                    {% if cuota %}
+                                        Pagado
+                                    {% else %}
+                                        Pendiente
+                                    {% endif %}
+                                {% endwith %}
+                            </td>
+                        </tr>
+                        {% endwith %}
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+        
+        
+        
+        
+        
+    </div>
+</div>
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+

@@ -17,7 +17,7 @@
       <div class="card m-2">
         <div class="card-body">
           <h3>Buscar Socio</h3>
-          <form action="" method='GET'>
+          <form method="get" action="{% url 'buscar_socio' %}">
             <div class="form-group">
               <input type="text" id="txtNroSocio" name="buscar" class="form-control" placeholder="Nº Socio" value="{{ request.GET.buscar_socio}}">
             </div>
@@ -51,10 +51,9 @@
         <td>
           
             <a href="{% url 'detalle_socio' socio.id %}"class="btn btn-primary">Ver Más</a>
-            <script type="text/javascript"src="{% static "js/modal.js" %}"></script>
-          <button onclick="abrir_modal_eliminar(' {% url 'eliminar_socio' socio.id %}')" class="btn btn-danger">Eliminar</button>
-            <a href="{% url 'editar_socio' socio.id %}"class="btn btn-secondary">editar</a>
-            {% comment %} <a href="{% url 'eliminar_actividad'actividad.id %}" title="Eliminar" class="btn btn-danger"></a> {% endcomment %}
+                   
+             <a href="{% url 'editar_socio' socio.id %}"class="btn btn-secondary">editar</a>
+            <a href="{% url 'eliminar_socio' socio.id %}" title="Eliminar" class="btn btn-danger">Eliminar</a>
           
         </td>
         

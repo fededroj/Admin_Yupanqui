@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'Administracion',
     'Socios',
     'Cuotas',
-    'inscripciones',
+    # 'inscripciones',
        
 ]
 
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'YupanquiAdministracion.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Admin_Yupanqui',
+        'NAME': 'Yupanqui2',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST':'localhost',
@@ -128,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'home/static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'

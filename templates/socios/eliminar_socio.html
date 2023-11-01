@@ -1,20 +1,20 @@
-{% comment %} {% extends "layouts/base.html" %}
+ {% extends "layouts/base.html" %}
 {% load static %}
 {% block titulo %}{% endblock titulo %}
 
 
 {% block content %}
-<div class="container">
+<div class="center-block">
     <div class="row">
    
    <div>
        <form action="" method="post">
    {% csrf_token %}
-   <p><strong>¿Desear eliminar {{object.nombre}}</strong></p>
+   <p><h3>¿Desear eliminar <strong> {{object.nombre}} {{object.apellido}},Nº Socio: {{object.nroSocio}}?</strong></h3></p>
    
-   <button type="submit">confirmar</button>
+
    <div class="text-center">
-       <input class="btn btn-lg btn-secondary" type="submit" value="CREAR SOCIO">
+       <input class="btn btn-lg btn-danger" type="submit" value="Eliminar Socio">
    </div><a href="{%url 'lista_socios' %}" class="btn btn-primary" >Volver</a>
        </form>
    
@@ -23,38 +23,4 @@
    </div> 
    </div>
 
-{% endblock content %} {% endcomment %}
-{% block content %} {% endblock content %}
-
-
-<div class="model-dialog modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 class="modal-title">ELIMINAR SOCIO</h2>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div>
-                <form action="" method="post">
-            {% csrf_token %}
-            <p><strong>¿Desear eliminar {{object.nombre}}</strong></p>
-            
-            <button type="submit">confirmar</button>
-            <div class="text-center">
-                <input class="btn btn-lg btn-secondary" type="submit" value="CREAR SOCIO">
-            </div><a href="{%url 'lista_socios' %}" class="btn btn-primary" >Volver</a>
-                </form>
-            
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
-            <button class="btn btn-primary" type="submit">Confirmar</button>
-        </div>
-    </div>
-</div>
-{% block extrajs %}
-   {% endblock extrajs %}
-</body>
+{% endblock content %} 

@@ -2,4 +2,23 @@
 nav{
     font-family: 'Noto Sans', sans-serif;
     font-family: 'Rubik', sans-serif;
+
 }
+/* *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+} */
+/* .content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+ }
+ .container-index{
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+ } */

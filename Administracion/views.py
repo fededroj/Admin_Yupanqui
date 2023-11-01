@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Profesor, Actividad, Categoria
-from .forms import ProfesorForm, ActividadForm, CategoriaForm
+from .models import Profesor, Actividad, Categoria, Inscripcion
+from .forms import ProfesorForm, ActividadForm, CategoriaForm, InscripcionForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView, TemplateView 
+from django import forms
 
 class Index(TemplateView):
     def get(self, request ,*args,**kwargs):
@@ -21,18 +22,18 @@ class ProfesoresListView(ListView):
     context_object_name = 'profesores'
     template_name = 'administracion/profesores.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(context)
-        return context
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Profesor.objects.filter(nombre__icontains=query) | Profesor.objects.filter(apellido__icontains=query)
+        return Profesor.objects.all()
     
 class DetalleProfesor(DetailView):
     model = Profesor
     context_object_name = 'detalle_profesor'
 
 class CrearProfesor(CreateView):
-    model = Profesor
-   
+    model = Profesor   
     form_class = ProfesorForm
     template_name = 'administracion/crear_profesor.html'
     success_url = reverse_lazy('lista_profesores')
@@ -47,8 +48,8 @@ class EditarProfesor(UpdateView):
 
 class EliminarProfesor(DeleteView):
     model = Profesor
-    template_name = 'administracion/eliminar_profesor'
-    success_url = reverse_lazy('administracion : profesores')
+    template_name = 'administracion/eliminar_profesor.html'
+    success_url = reverse_lazy('lista_profesores')
 
 
 
@@ -62,11 +63,11 @@ class ActividadesListView(ListView):
 
 class DetalleActividad(DetailView):
     model= Actividad
-    context_object_name= 'detalle_actividad'
+    context_object_name= 'actividad'
 
 class CrarActividad(CreateView):
     
-    model = Actividad
+   
     form_class = ActividadForm
     template_name = 'administracion/crear_actividad.html'  
     
@@ -128,3 +129,20 @@ class EliminarCategoria(DeleteView):
     model = Categoria
     template_name = 'administracion/eliminar_categoria.html'
     success_url = reverse_lazy('lista_categorias')
+
+class CrearIncripcion(CreateView):
+    model = Inscripcion
+    form_class = InscripcionForm
+    template_name = 'Inscripcion/crear_inscripcion.html'
+    success_url = reverse_lazy('index_incripciones')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Nueva Inscripcion"
+        return context
+
+class IndexIncripcion(ListView):
+    model = Inscripcion
+    context_object_name= "lista_inscripciones"   
+    template_name = 'Inscripcion/index.html'
+ 

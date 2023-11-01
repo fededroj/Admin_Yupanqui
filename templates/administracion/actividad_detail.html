@@ -3,8 +3,14 @@
 {% block titulo %}DETALLE ACTIVIDAD{% endblock titulo %}
 {% block content %}
 <a href="{%url 'lista_actividades' %}" class="btn btn-primary" >Volver</a>
-<h1>{{object.nombre}}</h1>
 
-
+<h1>{{actividad.nombre}}</h1>
+<h2>Categorias:</h2>
+<ul>
+    {% for categoria in actividad.categoria.all %}
+    <li>{{categoria.categoria}} </li>
+    
+    {% endfor %}
+</ul>
 
 {% endblock content %}
