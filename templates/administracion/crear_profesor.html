@@ -16,11 +16,11 @@
       <form action="#"method="POST">
         {% csrf_token %}
         {{ form|crispy}}
-        </div>
-        <div>
+       
+        
         <input type="submit" class="btn btn-success" value="Guardar">
         <a href="{%url 'lista_profesores' %}" class="btn btn-primary" >Volver</a>
-      </div>
+      
       </form>
      
 

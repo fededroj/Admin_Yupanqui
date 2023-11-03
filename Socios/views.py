@@ -13,14 +13,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 
      
-class SociosListView(ListView):
-    model = Socio
-    context_object_name= "lista_socios"   
-    template_name = 'socios/socios.html'
 
 class BuscarSocioView(ListView):
     model = Socio
-    template_name = 'socios/socios.html'
+    template_name = 'socios/index_socios.html'
     context_object_name = 'socios'
 
     def get_queryset(self):
@@ -37,31 +33,19 @@ class CrearSocio(CreateView):
     model = Socio   
     form_class = SocioForm
     template_name = 'socios/crear_socio.html'
-    success_url = reverse_lazy('lista_socios')
+    success_url = reverse_lazy('index_socios')
 
 class EditarSocio(UpdateView):
     model = Socio
     form_class= SocioForm
     template_name = 'socios/editar_socio.html'  
-    success_url = reverse_lazy("lista_socios")
+    success_url = reverse_lazy("index_socios")
     
 
 
 class EliminarSocio(DeleteView):
     model = Socio
     template_name = 'socios/eliminar_socio.html'
-    success_url = reverse_lazy("lista_socios")
+    success_url = reverse_lazy("index_socios")
 
 
-class CuotaCreateView(CreateView):
-    model = CuotaMensual
-    form_class = CuotaMensualForm
-    template_name = 'socios/buscar.html'
-
-    def form_valid(self, form):
-        socio = get_object_or_404(Socio, pk=self.kwargs['socio_id'])
-        form.instance.socio = socio
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('detalle_socio', kwargs={'socio_id': self.kwargs['socio_id']})

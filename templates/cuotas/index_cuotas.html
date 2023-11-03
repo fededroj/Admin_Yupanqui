@@ -18,8 +18,8 @@
                 <th>Nro. Socio</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Pagar</th>
-                <th>Detalle</th>
+                <th>Inscripcion</th>
+              
                 
             </tr>
         </thead>
@@ -29,17 +29,13 @@
                     <td>{{ socio.nroSocio }}</td>
                     <td>{{ socio.nombre }}</td>
                     <td>{{ socio.apellido }}</td>
-                    {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-                        Pago
-                      </button> {% endcomment %}
-                      <td>  
-                        <a href="{% url 'pago_cuota' socio.id %}">Cuota Social</a>
-                      <a href="{% url 'pago_cuota_act' socio.id %}">Cuota Actividad</a>
-                      
-                      </td>
+                    
+                    
                       <td>
-                        <a href="{% url 'cuotas_anuales' socio.id %}">Ver mas</a>
+                       <a  class="btn btn-primary btn-sm" href="{% url 'cuotas_anuales' socio.id %}">Cuota Social</a>
+                       <a class="btn btn-warning btn-sm" href="{% url 'cuotas_actividad' socio.id %}">Cuota Actividad</a>
                       </td>
+                      
                     <th>
                        
                         
@@ -69,6 +65,7 @@
         </div>
     </div>
 </div>
+
 
 
 

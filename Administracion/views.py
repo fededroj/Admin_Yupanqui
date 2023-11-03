@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Profesor, Actividad, Categoria, Inscripcion
-from .forms import ProfesorForm, ActividadForm, CategoriaForm, InscripcionForm
+from .models import Profesor, Actividad, Categoria
+from .forms import ProfesorForm, ActividadForm, CategoriaForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView, TemplateView 
-from django import forms
+
 
 class Index(TemplateView):
     def get(self, request ,*args,**kwargs):
@@ -67,7 +67,7 @@ class DetalleActividad(DetailView):
 
 class CrarActividad(CreateView):
     
-   
+    model=Actividad
     form_class = ActividadForm
     template_name = 'administracion/crear_actividad.html'  
     
@@ -78,7 +78,7 @@ class EditarActividad(UpdateView):
     model = Actividad
     form_class= ActividadForm
     template_name = 'administracion/editar_actividad.html'  
-    success_url = reverse_lazy("lista_actividades")
+    success_url = reverse_lazy('lista_actividades')
     
 
 class EliminarActividad(DeleteView):
@@ -112,7 +112,7 @@ class EditarCategoria(UpdateView):
     model = Categoria
     form_class= CategoriaForm
     template_name = 'administracion/editar_categoria.html'  
-    success_url = reverse_lazy("lista_categoria")
+    success_url = reverse_lazy('lista_categorias')
    
 
 class BorrarCategoria(DeleteView):
@@ -130,19 +130,4 @@ class EliminarCategoria(DeleteView):
     template_name = 'administracion/eliminar_categoria.html'
     success_url = reverse_lazy('lista_categorias')
 
-class CrearIncripcion(CreateView):
-    model = Inscripcion
-    form_class = InscripcionForm
-    template_name = 'Inscripcion/crear_inscripcion.html'
-    success_url = reverse_lazy('index_incripciones')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Nueva Inscripcion"
-        return context
-
-class IndexIncripcion(ListView):
-    model = Inscripcion
-    context_object_name= "lista_inscripciones"   
-    template_name = 'Inscripcion/index.html'
- 

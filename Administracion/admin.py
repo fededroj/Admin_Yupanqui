@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import *
 from Socios.models import Socio
 from Cuotas.models import CuotaMensual, CuotaActividad
+from Inscripcion.models import Inscripcion
 
 
 

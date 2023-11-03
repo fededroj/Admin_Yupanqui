@@ -1,15 +1,44 @@
 {%extends 'layouts/base.html'%} 
 {% load static %}
-{% block titulo %}DETALLE ACTIVIDAD{% endblock titulo %}
+{% block titulo %}DETALLE SOCIO{% endblock titulo %}
 {% block content %}
-<a href="{%url 'lista_socios' %}" class="btn btn-primary" >Volver</a>
-<h1>{{object.nroSocio}}</h1>
-<div>
-    {{object.nombre}}
-    {{object.apellido}}
-    {{object.calle}}
-    {{object.nro}}
-    {{object.localidad}}
+<a href="{%url 'index_socios' %}" class="btn btn-primary" >Volver</a>
+<h1></h1>
+<div class="container">
+    <div class="card">
+      <!-- Foto de socio en la esquina superior izquierda -->
+      <img class="card-img-top" src="{{ socio.foto.url }}" alt="Foto de socio">
+      <div class="card-body">
+        <!-- Datos del socio -->
+        <h5 class="card-title">{{ object.nombre }} {{ object.apellido }}</h5>
+        <p class="card-text">Número de Socio: {{ object.nroSocio }}</p>
+        <p class="card-text">Género: {{object.get_genero_display }}</p>
+        <p class="card-text">Email: {{ object.email }}</p>
+        <p class="card-text">DNI: {{ object.dni }}</p>
+        <p class="card-text">Teléfono: {{ object.tel }}</p>
+        <p class="card-text">Dirección: {{ object.calle }} {{ object.nro }}, {{ object.localidad }}</p>
+        <p class="card-text">Estado: {{ object.get_estado_display }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+    
+    <div class="card">
+      <div class="card-body">
+        <!-- Datos de la inscripción -->
+        <h5 class="card-title">Inscripto en : {{ object.inscripcion.nombre }} {{ object.inscripcion.apellido }}</h5>
+        <p class="card-text">Fecha de Inscripción: {{ socio.inscripcion.fecha_inscripcion }}</p>
+        <p class="card-text">Actividad: {{ inscripcion.actividad.nombre }}</p>
+        <p class="card-text">Categoría: {{ inscripcion.categoria.categoria }}</p>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+   
 </div>
 
 

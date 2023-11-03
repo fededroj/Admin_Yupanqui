@@ -25,6 +25,7 @@ class CuotaMensual(models.Model):
     ano = models.IntegerField(default=datetime.now().year)
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_pago = models.DateField(default=date.today)
+    mes_pagado = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Cuota de {self.get_mes_display()} {self.ano} - {self.socio}"

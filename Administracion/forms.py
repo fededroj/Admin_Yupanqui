@@ -1,5 +1,5 @@
 from django import forms
-from .models import  Actividad, Profesor, Categoria, Inscripcion
+from .models import  Actividad, Profesor, Categoria
 
 
 class ActividadForm(forms.ModelForm):
@@ -11,11 +11,6 @@ class ActividadForm(forms.ModelForm):
         'categoria' : forms.CheckboxSelectMultiple
     }
 
-# class ActividadForm(forms.ModelForm):
-
-#      class Meta:
-#           model = Actividad
-#           fields = '__all__'
 
 class ProfesorForm(forms.ModelForm):
 
@@ -27,10 +22,4 @@ class CategoriaForm(forms.ModelForm):
 
      class Meta:
           model = Categoria
-          fields = '__all__'
-
-class InscripcionForm(forms.ModelForm):
-     
-     class Meta:
-          model = Inscripcion
           fields = '__all__'
