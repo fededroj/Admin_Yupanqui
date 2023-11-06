@@ -7,18 +7,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.contrib.auth import views as auth_views
+from Socios.views import LoginFormView
 
 
 
 urlpatterns = [
  
     path('admin/', admin.site.urls),
-    path('socios/', include("Socios.urls")),    
+    path('login/', LoginFormView.as_view(), name='login'),
+    path('', include("Socios.urls")),    
     path('administracion/',include("Administracion.urls")), 
     path('cuotas/', include("Cuotas.urls")),
     path('inscripcion/', include("Inscripcion.urls")) , 
     path('accounts/', include("django.contrib.auth.urls")),
+    path('lagout/',auth_views.LogoutView.as_view(template_name='accounts/login/'), name='lagout'),
 ]
 
 if settings.DEBUG:

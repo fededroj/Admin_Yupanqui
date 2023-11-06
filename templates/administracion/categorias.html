@@ -28,9 +28,10 @@
          
           
           <td>
-            <a href="{% url 'detalle_categoria' categoria.id %}"class="btn btn-primary">Ver Más</a>
-            <a href="{% url 'eliminar_categoria' categoria.id %}"class="btn btn-danger">Eliminar</a>
-            <a href="{% url 'editar_categoria' categoria.id %}"class="btn btn-secondary">editar</a>
+            <a href="{% url 'editar_categoria' categoria.id %}"class="btn btn-warning btn-sm">editar</a>
+            <a href="{% url 'eliminar_categoria' categoria.id %}"class="btn btn-danger btn-sm">Eliminar</a>
+            <a href="{% url 'detalle_categoria' categoria.id %}"class="btn btn-primary btn-sm">Ver Más</a>
+            
             {% comment %} <a href="{% url 'eliminar_actividad'actividad.id %}" title="Eliminar" class="btn btn-danger"></a> {% endcomment %}
           </td>
           

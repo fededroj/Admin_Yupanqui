@@ -55,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+ 
 ]
 
 ROOT_URLCONF = 'YupanquiAdministracion.urls'
@@ -146,3 +148,17 @@ CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+#  LOGIN
+
+LOGIN_REDIRECT_URL = '/inscripcion/'
+
+LOGIN_URL = 'login'  # Nombre de la URL de inicio de sesión que definiste en tus URLs.
+
+LOGOUT_REDIRECT_URL= 'login'
