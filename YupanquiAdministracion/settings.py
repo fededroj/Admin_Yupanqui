@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Socios',
     'Cuotas',
     'Inscripcion',
+    
        
 ]
 
@@ -146,9 +147,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'home/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 
 AUTHENTICATION_BACKENDS = (

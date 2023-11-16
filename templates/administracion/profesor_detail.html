@@ -7,8 +7,8 @@
 
 <h1>{{ object.nombre}}</h1>
 <p>{{ object.apellido }}</p>
-<h5>direccion: {{ object.calle }}  {{ object.nro }}</h5>
+<h5>direccion: {{ object.calle }}  {{ object.nro }} , {{object.localidad}}</h5>
 
-<a href="{%url 'lista_profesores' %}" class="btn btn-primary" >Volver</a>
+
 
 {% endblock content %}

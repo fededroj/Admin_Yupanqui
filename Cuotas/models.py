@@ -29,7 +29,8 @@ class CuotaMensual(models.Model):
 
     def __str__(self):
         return f"Cuota de {self.get_mes_display()} {self.ano} - {self.socio}"
-
+    class Meta:
+        unique_together = ('socio', 'mes', 'ano') 
 class CuotaActividad(models.Model):
     
     MES_CHOICES = (
@@ -56,4 +57,7 @@ class CuotaActividad(models.Model):
     fecha_pago = models.DateField(default=date.today)
 
     def __str__(self):
-        return f"Cuota de {self.get_mes_display()} {self.ano} - {self.socio}"
+        return f"Cuota de {self.get_mes_display()} {self.ano} - {self.socio} -{self.actividad}"
+    
+    class Meta:
+        unique_together = ('socio', 'actividad', 'mes', 'ano') 

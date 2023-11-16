@@ -26,6 +26,7 @@ class Actividad(models.Model):
 class Profesor(models.Model):
     id_profesor=models.IntegerField(null=False, verbose_name="id_profesor")
     categorias=models.ManyToManyField(Categoria)
+    actividad= models.ForeignKey(Actividad,  on_delete=models.CASCADE, null= False)
     nombre = models.CharField(max_length=100,verbose_name='Nombre')
     apellido = models.CharField(max_length=150,verbose_name='Apellido')
     email = models.EmailField(max_length=150,null=True)
