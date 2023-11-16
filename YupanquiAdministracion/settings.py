@@ -160,7 +160,7 @@ AUTHENTICATION_BACKENDS = (
 
 #  LOGIN
 
-LOGIN_REDIRECT_URL = '/inscripcion/'
+LOGIN_REDIRECT_URL = '/'
 
 LOGIN_URL = 'login'  # Nombre de la URL de inicio de sesión que definiste en tus URLs.
 

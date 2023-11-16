@@ -8,14 +8,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import  UserPassesTestMixin
 from django.contrib import messages
-
 # Create your views here.
-  
-
-    
-
-
-
 
 class BuscarSocioView(LoginRequiredMixin,ListView):
     model = Socio

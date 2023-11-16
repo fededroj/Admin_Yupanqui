@@ -15,8 +15,7 @@ from Administracion.views import ErrorView
 
 urlpatterns = [
  
-    path('admin/', admin.site.urls),
-    
+    path('admin/', admin.site.urls),    
     path('lagout/',auth_views.LogoutView.as_view(template_name='accounts/login/'), name='lagout'),
     
     path('', include("Socios.urls")),    
